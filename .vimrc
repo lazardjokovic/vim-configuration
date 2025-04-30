@@ -16,7 +16,13 @@ Plug 'tpope/vim-fugitive'
 " Color scheme: Gruvbox
 Plug 'morhetz/gruvbox'
 
+" Use fd for FZF and show hidden files, while respecting .fdignore
+let $FZF_DEFAULT_COMMAND = 'fdfind --type f --hidden --strip-cwd-prefix'
+
 call plug#end()
+
+" Open new window (split) to the right
+set splitright
 
 " Enable dark mode for Gruvbox
 set background=dark
@@ -41,7 +47,7 @@ autocmd VimEnter * if argc() == 0 && isdirectory(expand('%')) | NERDTree | wincm
 autocmd BufEnter * if (winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()) | q | endif
 
 " FZF mappings
-nnoremap <C-S-f> :Files<CR>
+nnoremap <C-p> :Files<CR>
 nnoremap <C-S-g> :Rg<Space>
 
 " Window navigation
